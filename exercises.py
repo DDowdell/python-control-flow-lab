@@ -156,3 +156,78 @@ def weather_advice():
 
 # Call the function
 weather_advice()
+
+# Exercise 5: What's the Season?
+#
+# Write a Python function named `determine_season` that figures out the season based on the entered date.
+#
+# Requirements:
+# - The function should first prompt the user to enter the month (as three characters): "Enter the month of the year (Jan - Dec):"
+# - Then, the function should prompt the user to enter the day of the month: "Enter the day of the month:"
+# - Determine the current season based on the date:
+#      - Dec 21 - Mar 19: Winter
+#      - Mar 20 - Jun 20: Spring
+#      - Jun 21 - Sep 21: Summer
+#      - Sep 22 - Dec 20: Fall
+# - Print the season for the entered date in the format: "<Mmm> <dd> is in <season>."
+#
+# Hints:
+# - Use 'in' to check if a string is in a list or tuple.
+# - Adjust the season based on the day of the month when needed.
+# - Ensure to validate input formats and handle unexpected inputs gracefully.
+
+def determine_season():
+    month_input = input("Enter the month of the year (Jan - Dec): ").strip().capitalize()
+    day_input = input("Enter the day of the month: ").strip()
+    try:
+        day = int(day_input)
+        if day < 1 or day > 31:
+            print("Invalid day")
+            return
+    except ValueError:
+        print("Invalid input")
+        return
+    if month_input in ["Dec", "Jan", "Feb"]:
+        if month_input == 'Dec' and day >= 21:
+            season = "Winter"
+        elif month_input == 'Jan' or (month_input == 'Dec' and day < 21):
+            season = "Winter"
+        elif month_input == 'Feb':
+            season = "Winter"
+        else:
+            season = "Invalid date"
+    elif month_input in ['Mar', 'Apr', 'May']:
+        if month_input == 'Mar' and day >= 20:
+            season = "Spring"
+        elif month_input == 'Apr' or (month_input == 'Mar' and day < 20):
+            season = "Spring"
+        elif month_input == 'May':
+            season = "Spring"
+        else:
+            season = "Invalid date"
+    elif month_input in ['Jun', 'Jul', 'Aug']:
+        if month_input == 'Jun' and day >= 21:
+            season = "Summer"
+        elif month_input == 'Jul' or (month_input == 'Jun' and day < 21):
+            season = "Summer"
+        elif month_input == 'Aug':
+            season = "Summer"
+        else:
+            season = "Invalid date"
+    elif month_input in ['Sep', 'Oct', 'Nov']:
+        if month_input == 'Sep' and day >= 22:
+            season = "Fall"
+        elif month_input == 'Oct' or (month_input == 'Sep' and day < 22):
+            season = "Fall"
+        elif month_input == 'Nov':
+            season = "Fall"
+        else:
+            season = "Invalid date"
+    else:
+        print("Invalid month. Please enter a valid month (Jan - Dec).")
+        return
+    print(f"{month_input} {day} is in {season}.")
+
+
+# Call the function
+determine_season()
